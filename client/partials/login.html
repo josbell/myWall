@@ -1,0 +1,27 @@
+<div style="padding: 10%">
+	<form name='usernameForm' ng-hide='usernameEntered && usernameForm.username.$valid'>
+		<div class='form-group' ng-class="{'has-error':usernameForm.username.$touched && usernameForm.username.$invalid || credentialsFailed}">
+			<h1>the wall.</h1>
+			<input type="text" name='username' class="form-control" placeholder="username.." ng-model='user.username' minlength="2" required>
+			<p class="help-block" ng-show="usernameForm.username.$touched && usernameForm.username.$invalid && usernameForm.username.$error.required">Username required</p>
+			<p class="help-block" ng-show="usernameForm.username.$touched && usernameForm.username.$invalid && usernameForm.username.$error.minlength">Username must be at least 2 characters</p>
+			<p class="help-block" ng-if='credentialsFailed'>Username/Password combination not valid</p>
+		</div>
+		<button class="btn btn-success" type="button" ng-click='usernameEntered=true'>Continue</button>
+		<a href="#!/register" class="pull-right">New User</a>
+	</form>
+
+
+	<form name='passwordForm' ng-submit='submit()' ng-show='usernameEntered && usernameForm.username.$valid'>
+		<div class='form-group' ng-class="{'has-error':passwordForm.password.$touched && passwordForm.password.$invalid || credentialsFailed}">
+			<h1>the wall.</h1>
+			<input type="password" name='password' class="form-control" placeholder="password.." ng-model='user.password' minlength='4' required>
+			<p class="help-block" ng-show="passwordForm.password.$touched && passwordFormpassword.password.$invalid && passwordForm.password.$error.required">Password required</p>
+			<p class="help-block" ng-show="passwordForm.password.$touched && passwordFormpassword.password.$invalid && passwordForm.password.$error.minlength">Password required</p>
+			<p class="help-block" ng-if='credentialsFailed'>Username/Password combination not valid</p>
+		</div>
+		<button class="btn btn-default" type="button" ng-click='usernameEntered=false'>Back</button>
+		<button class="btn btn-success" type="submit" style="margin-left: 10px;">Continue</button>
+		<a href="#!/register" class="pull-right">New User</a>
+	</form>
+</div>
